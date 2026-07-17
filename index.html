@@ -3,10 +3,10 @@
 <html class="dark" lang="en">
 
 <head>
+  
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Paolo Hagos | Full Stack Web Developer</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
@@ -15,6 +15,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=IBM+Plex+Mono:wght@100..900&family=Montserrat:wght@100..900&display=swap"
     rel="stylesheet" />
+  <!-- External CSS -->
+  <link rel="stylesheet" href="./index.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -109,35 +113,9 @@
       },
     }
   </script>
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
-
-    .glass-effect {
-      background: rgba(30, 41, 59, 0.4);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .project-card:hover .project-image {
-      transform: scale(1.05);
-    }
-
-    .project-card:hover {
-      border-color: #89ceff;
-      background: rgba(30, 41, 59, 0.6);
-    }
-
-    .tech-chip {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(137, 206, 255, 0.2);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+  <!-- Webpage Icon -->
+  <link rel="icon" type="image/x-icon" href="./images/pao.ico">
+  <title>Paolo Hagos | Full Stack Web Developer</title>
 </head>
 
 <body
@@ -146,6 +124,7 @@
   <header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-border-glass">
     <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
       <div class="font-headline-sm text-headline-sm font-bold text-primary tracking-tighter">PH</div>
+
       <nav class="hidden md:flex items-center space-x-8 font-label-code text-label-code">
         <a class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors duration-300"
           href="#home">home</a>
@@ -156,13 +135,29 @@
         <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
           href="#contact">contact</a>
       </nav>
+
       <a class="hidden md:block bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold text-sm scale-95 active:scale-90 transition-all hover:brightness-110"
-        href="#">Resume</a>
-      <button class="md:hidden text-primary">
-        <span class="material-symbols-outlined">menu</span>
+        href="./Paolo_Hagos_Resume.pdf" target="_blank">Resume</a>
+
+      <!-- Hamburger button -->
+      <button id="mobile-menu-btn" class="md:hidden text-primary" aria-label="Toggle menu" aria-expanded="false"
+        aria-controls="mobile-menu" onclick="toggleMobileMenu()">
+        <span id="mobile-menu-icon" class="material-symbols-outlined">menu</span>
       </button>
     </div>
+
+    <!-- Mobile dropdown panel (hidden by default) -->
+    <nav id="mobile-menu"
+      class="md:hidden hidden flex-col bg-surface-glass backdrop-blur-md border-t border-border-glass px-gutter py-4 space-y-4">
+      <a class="text-primary font-bold" href="#home" onclick="closeMobileMenu()">home</a>
+      <a class="text-on-surface-variant font-medium" href="#projects" onclick="closeMobileMenu()">projects</a>
+      <a class="text-on-surface-variant font-medium" href="#tools" onclick="closeMobileMenu()">tools</a>
+      <a class="text-on-surface-variant font-medium" href="#contact" onclick="closeMobileMenu()">contact</a>
+      <a class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold text-sm text-center"
+        href="./Paolo_Hagos_Resume.pdf" target="_blank">Resume</a>
+    </nav>
   </header>
+
   <main>
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden" id="home">
@@ -200,8 +195,7 @@
             </div>
             <div
               class="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-primary/20 p-2 glass-effect">
-              <img alt="Paolo Hagos Profile" class="w-full h-full object-cover rounded-full"
-                src="https://lh3.googleusercontent.com/aida/AP1WRLul3FqHiedHWx-nJDoDagD3zPgZ5N2NolU-WuGjWF-w5J_SFh_FccsVoDlKZ4W6YmgTA8FNF7Y1guw7F6jInImCJoA2cQh627yp8Eh1n5oaXn8soN0Tp5k9HOzWPpV4rN6YvSgzl9b--4GJOfbhlV87aFxhOnVFOPDtfYfruvJrZoH19N-zuuFLDKT3E3Aw8GoFXYKstxmZhjwLWKOV4eal7wBESHck8zW4Tbq_GYQMnhr_DtU53OKQZS4" />
+              <img alt="Paolo Hagos Profile" class="w-full h-full object-cover rounded-full" src="./images/pao.png" />
             </div>
           </div>
         </div>
@@ -216,13 +210,13 @@
         </div>
         <!-- Projects Bento Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- E-commerce API -->
+          <!-- E-commerce API Documentation -->
           <div
             class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
             <div class="relative aspect-video overflow-hidden">
               <img class="project-image w-full h-full object-cover transition-transform duration-500"
-                data-alt="A high-end interface mockup of an E-commerce API dashboard, featuring sleek dark modes, vibrant sky blue data visualizations, and clean documentation panels. The style is professional and technical, using glassmorphism effects and modern corporate design elements with sharp typography."
-                src="https://lh3.googleusercontent.com/aida/AP1WRLu8ppUQj3MCXv8LhfWRiZg_N2ObRgV1g3xaLGBCM1rdu4l4nqzqc4JPpLAIH00CLF7Sqh_BzODxCT_HLgiH_RwR6I9XoanxMlL_BJGhPugq-CINWuIEjJRegYzVI-eyc7Rzj-KRkyn2_5As1qywUiwu83TJqsDKg_yteIXZnTC4i-xnSDzAf6chRIZa1yfQ4hI7p2qQtyBExF-kElPPcnepbOjnkesCp5fUNsyFIjmp43uXHjdoxHv5ctaj" />
+                src="./images/ecommerce_api.png"
+                alt="E-commerce API Documentation">
             </div>
             <div class="p-6 flex flex-col flex-grow space-y-4">
               <div class="flex flex-wrap gap-2">
@@ -233,11 +227,42 @@
               </div>
               <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
                 E-commerce API Documentation</h3>
-              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
-                Dynamic E-Commerce Workflow Management featuring dynamic routes, real-time inventory updates, and secure
-                authentication.
-              </p>
-              <div class="mt-auto pt-4 border-t border-border-glass flex items-center justify-between">
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">Dynamic E-Commerce Workflow
+                Management.
+                The System features dynamic routes for order processing, real-time inventory updates, and secure user
+                authentication. Documented Backend API published publicly using Postman.</p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Course Booking API Documentation -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                src="./images/coursebooking_api.png"
+                alt="Course Booking API Documentation">
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase tracking-widest">API</span>
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase tracking-widest">Postman</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Course
+                Booking API Documentation</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">RESTful API for managing course
+                enrollments,
+                featuring user registration, authentication, and retrieval of user details. Publicly documented using
+                Postman.</p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
                 <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
                   VIEW INFO
                   <span
@@ -251,21 +276,22 @@
             class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
             <div class="relative aspect-video overflow-hidden">
               <img class="project-image w-full h-full object-cover transition-transform duration-500"
-                data-alt="A modern web application dashboard for course booking, showcasing a calendar view with colorful schedule blocks on a clean dark background. The UI features intuitive navigation, glassmorphic card overlays, and a sophisticated technical aesthetic using sky blue as the primary accent color."
-                src="https://lh3.googleusercontent.com/aida/AP1WRLvcqdmQoMhEjZ3Dlp4ryrZJ09uZrcT1qHK4-O7dZ2TAz4vHz-LQOCL9zsA-q8sBgOg-Tc_mI2wwZ9Gsyqg36hsCVj80JF6S4_xgwBjX_u8vUe2WNFoqMFjByzw1xsO-joXBYnhMi4BEeGegWrMiqBmsLi3U_Y9b33VsHefeuBYvJaTsi0ncKbzpdGU-Fb5-kcLH88lmq6O0YFQkZe2aQUlr-DJ7EYC--zAahrCd3YX_YVA-MHSsgKGRgJhR" />
+                src="https://lh3.googleusercontent.com/aida/AP1WRLvcqdmQoMhEjZ3Dlp4ryrZJ09uZrcT1qHK4-O7dZ2TAz4vHz-LQOCL9zsA-q8sBgOg-Tc_mI2wwZ9Gsyqg36hsCVj80JF6S4_xgwBjX_u8vUe2WNFoqMFjByzw1xsO-joXBYnhMi4BEeGegWrMiqBmsLi3U_Y9b33VsHefeuBYvJaTsi0ncKbzpdGU-Fb5-kcLH88lmq6O0YFQkZe2aQUlr-DJ7EYC--zAahrCd3YX_YVA-MHSsgKGRgJhR"
+                alt="Course Booking App">
             </div>
             <div class="p-6 flex flex-col flex-grow space-y-4">
               <div class="flex flex-wrap gap-2">
                 <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">MongoDB</span>
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Express.js</span>
                 <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">React</span>
                 <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Node.js</span>
               </div>
               <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
                 Course Booking App</h3>
-              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
-                A MERN-stack enrollment system with user authentication and profile management for creating and managing
-                courses.
-              </p>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">A MERN-stack course enrollment
+                system featuring user registration, authentication, and profile management. Authenticated users can
+                create, update, archive, and activate courses.</p>
               <div class="mt-auto pt-4 border-t border-border-glass">
                 <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
                   VIEW INFO
@@ -280,21 +306,22 @@
             class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
             <div class="relative aspect-video overflow-hidden">
               <img class="project-image w-full h-full object-cover transition-transform duration-500"
-                data-alt="Mobile app screens for an e-commerce platform displaying high-fashion products with elegant typography and clean white space against a dark UI theme. The layout is a modern bento-style grid with glassmorphic cards and blue primary button highlights, evoking a high-performance shopping experience."
-                src="https://lh3.googleusercontent.com/aida/AP1WRLteNujKv2IVZkdw_3IzxCjxdVlytxiyhD8HEjPrkqb0f_I-4F_pQDOCSZ1tQsNkmb9ROKQ3R-KyiMkykfvp9CASJ4Q902R8T2vZjo-34EV2qsCaLaPYJ45VvV6C9cqTPdKL5spCaEReZFzgRfV_TvQiRP4_PCJ_jg7Cv3nDwUSa00Vf6IaSskmyLP5TXIq1f5xuXA_7hme7AEE200HI-E3iA-NgOcYWv2BLRK0q2VyzT4y6DHpjOYWYb1E" />
+                src="./images/ecommerce_app.png"
+                alt="E-commerce App">
             </div>
             <div class="p-6 flex flex-col flex-grow space-y-4">
               <div class="flex flex-wrap gap-2">
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">MongoDB</span>
                 <span
                   class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Express.js</span>
-                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">MERN</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">React</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Node.js</span>
               </div>
               <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
                 E-commerce App</h3>
-              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
-                Platform featuring dynamic product catalogs, filtering, real-time search, and a comprehensive admin
-                dashboard with analytics.
-              </p>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">MERN E-Commerce Platform. The
+                platform features dynamic product catalog with filtering and sorting, real-time search, secure checkout,
+                and a comprehensive admin dashboard.</p>
               <div class="mt-auto pt-4 border-t border-border-glass">
                 <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
                   VIEW INFO
@@ -304,26 +331,83 @@
               </div>
             </div>
           </div>
-          <!-- AWS Infra -->
+          <!-- Airline Booking System Mockup -->
           <div
             class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
             <div class="relative aspect-video overflow-hidden">
               <img class="project-image w-full h-full object-cover transition-transform duration-500"
-                data-alt="A detailed technical architectural diagram of an AWS cloud infrastructure, showing VPCs, EC2 instances, and S3 buckets interconnected. The visual style is clean and diagrammatic with a modern technical aesthetic, using a palette of blues and grays to signify enterprise-grade reliability."
-                src="https://lh3.googleusercontent.com/aida/AP1WRLsEhKQzCWLxeBF2tItTVDuMJlvVc9SbGWDi2S8vl3KFZus1B0xrZJq9owxjmM0r_owvUjAED_pJ5ZPoJ3wRSkq3YhAXee_4SvBvKP5ndyieXQvnezigqgzMLHtdlppKg9sEQ1mtUsR2NyzBkvvjHHhcuQLMBal_DUJqcWC4lglxSkpf_JcFAPJMeBzPyFSwEINmvxy1bb1d8Eg7e6bHxvBFqvCnr6kmT78igtw3ibbg54PTZ3Rp14Lhrrw" />
+                src="./images/airlinebooking_mockup.jpg"
+                alt="Airline Booking System Mockup">
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase tracking-widest">Side
+                  Project</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Airline Booking System Mockup</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">Conceptual design showcasing an
+                intuitive UI for flight search, seat selection, and booking confirmation, focusing on user experience
+                and workflow efficiency.</p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Airline Booking System Prototype -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                src="./images/airlinebooking_prototype.jpg"
+                alt="Airline Booking System Prototype">
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase tracking-widest">Side
+                  Project</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Airline Booking System Prototype</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">Interactive prototype simulating
+                end-to-end airline booking functionalities, including flight search, reservation, payment processing,
+                and real-time ticket management.</p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Infra Short Course Capstone (AWS) -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                src="./images/aws_course.png"
+                alt="Infra Short Course Capstone (AWS)">
             </div>
             <div class="p-6 flex flex-col flex-grow space-y-4">
               <div class="flex flex-wrap gap-2">
                 <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">AWS</span>
                 <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">EC2</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">S3</span>
                 <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Lambda</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">DynamoDB</span>
               </div>
               <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
-                Infra Capstone (AWS)</h3>
-              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
-                Secure, highly available infrastructure utilizing VPCs, auto-scaling, and RDS for multi-tier web
-                hosting.
-              </p>
+                Infra Short Course Capstone (AWS)</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">Secure, highly available AWS
+                infrastructure architecture utilizing VPCs, EC2, auto-scaling, and RDS to reliably host a multi-tier web
+                application.</p>
               <div class="mt-auto pt-4 border-t border-border-glass">
                 <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
                   VIEW INFO
@@ -333,13 +417,13 @@
               </div>
             </div>
           </div>
-          <!-- Java Spring Boot -->
+          <!-- Java Back-End Short Course Capstone -->
           <div
             class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
             <div class="relative aspect-video overflow-hidden">
               <img class="project-image w-full h-full object-cover transition-transform duration-500"
-                data-alt="A stylized glowing Java and Spring Boot logo set against a backdrop of complex lines of code and digital data nodes. The lighting is dark and cinematic with neon blue highlights, representing robust back-end engineering and high-performance server-side logic in a modern developer portfolio style."
-                src="https://lh3.googleusercontent.com/aida/AP1WRLu99AQC4osxXty9O2kiwX_Zef6i-o98oecaR83ugdM7dpfRn_0XlAOj3gDQyDNnFZl2I2RLFmWUTeyYGUvYLrqsNw94PvxYP00rnIzUL4Ju4dYEuQfUWAjs6eoLD5qBxynUd4iBcHOH4N8QKnaSZgC03EqehJDWxM779EuhGT3I7EsMjfpx9t_9GWLk1mzHrX3UO76a0PZK90Pj0WBDs1XoATe4OPV77XJloZdVQbPqYI66ThXXnUWLSsUR" />
+                src="./images/java_course.jpg"
+                alt="Java Back-End Short Course Capstone">
             </div>
             <div class="p-6 flex flex-col flex-grow space-y-4">
               <div class="flex flex-wrap gap-2">
@@ -348,10 +432,10 @@
                   Boot</span>
               </div>
               <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
-                Java Back-End Capstone</h3>
-              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
-                RESTful back-end service built with Spring Boot, managing authentication, transactions, and persistence.
-              </p>
+                Java Back-End Short Course Capstone</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">Robust RESTful back-end service
+                built with Spring Boot, managing secure user authentication, transactional data, and relational database
+                persistence.</p>
               <div class="mt-auto pt-4 border-t border-border-glass">
                 <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
                   VIEW INFO
@@ -361,13 +445,13 @@
               </div>
             </div>
           </div>
-          <!-- ASP.NET C# -->
+          <!-- C# Back-End Short Course Capstone -->
           <div
             class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
             <div class="relative aspect-video overflow-hidden">
               <img class="project-image w-full h-full object-cover transition-transform duration-500"
-                data-alt="A conceptual software architecture diagram for an ASP.NET Core project, featuring decoupled layers and repository patterns. The design is clean and technical, using professional blue tones and modern line icons to represent various web services and data repositories in a high-fidelity developer context."
-                src="https://lh3.googleusercontent.com/aida/AP1WRLukAdczi4IIsJgBSLVxjS4sPF1VmLe-VUQEol-D4COflgdU3f5Zprf3M5sZWiW0M6ZLQRnZogFm8Jzmvk1OsmImpBhgZbKdbh5Tqxt2F7GHnDcwST-gE5IM_yUTk92XU10cdsLx_jyW_OcB3VhN0SCKcVPK7EezHVXehehg20VxcYk2v3t2rruCh81rplkTg9H7incCc43q-ff72ntSQP8tLb4dSzoN8qB-D03nLu9lbn08U6YflXMfKP_p" />
+                src="./images/csharp_course.png"
+                alt="C# Back-End Short Course Capstone">
             </div>
             <div class="p-6 flex flex-col flex-grow space-y-4">
               <div class="flex flex-wrap gap-2">
@@ -375,10 +459,9 @@
                 <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">ASP.NET</span>
               </div>
               <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
-                C# Back-End Capstone</h3>
-              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
-                High-performance Web API using decoupled repository pattern and Entity Framework Core for robust data
-                management.
+                C# Back-End Short Course Capstone</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">High-performance ASP.NET Core Web
+                API designed with a decoupled repository pattern, utilizing Entity Framework Core and custom middleware.
               </p>
               <div class="mt-auto pt-4 border-t border-border-glass">
                 <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
@@ -596,22 +679,7 @@
     onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     <span class="material-symbols-outlined">arrow_upward</span>
   </button>
-  <script>
-    // Simple intersection observer for reveal animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          entry.target.classList.remove('opacity-0', 'translate-y-10');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.project-card, .glass-effect').forEach(el => {
-      el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
-      observer.observe(el);
-    });
-  </script>
+  <script src="./index.js"></script>
 </body>
 
 </html>
