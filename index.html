@@ -1,12 +1,617 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-  </body>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Paolo Hagos | Full Stack Web Developer</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=IBM+Plex+Mono:wght@100..900&family=Montserrat:wght@100..900&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "border-glass": "rgba(255, 255, 255, 0.1)",
+            "surface-variant": "#2d3449",
+            "on-secondary": "#00354a",
+            "on-tertiary-fixed": "#2c1600",
+            "tertiary": "#ffb86e",
+            "on-background": "#dae2fd",
+            "surface-container-highest": "#2d3449",
+            "on-tertiary-container": "#4d2b00",
+            "surface-container-low": "#131b2e",
+            "on-primary-fixed": "#001e2f",
+            "on-secondary-fixed": "#001e2c",
+            "error-container": "#93000a",
+            "on-surface-variant": "#bec8d2",
+            "on-secondary-container": "#00374d",
+            "primary": "#89ceff",
+            "surface-container": "#171f33",
+            "secondary": "#7bd0ff",
+            "tertiary-container": "#de8712",
+            "on-primary": "#00344d",
+            "primary-container": "#0ea5e9",
+            "secondary-container": "#00a6e0",
+            "tertiary-fixed": "#ffdcbd",
+            "surface-container-lowest": "#060e20",
+            "primary-fixed": "#c9e6ff",
+            "tertiary-fixed-dim": "#ffb86e",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#004c69",
+            "on-primary-fixed-variant": "#004c6e",
+            "surface-tint": "#89ceff",
+            "outline": "#88929b",
+            "inverse-on-surface": "#283044",
+            "background": "#0b1326",
+            "secondary-fixed-dim": "#7bd0ff",
+            "inverse-primary": "#006591",
+            "on-tertiary": "#492900",
+            "error": "#ffb4ab",
+            "text-muted": "#94A3B8",
+            "surface": "#0b1326",
+            "inverse-surface": "#dae2fd",
+            "on-tertiary-fixed-variant": "#693c00",
+            "outline-variant": "#3e4850",
+            "surface-glass": "rgba(30, 41, 59, 0.5)",
+            "surface-dim": "#0b1326",
+            "surface-container-high": "#222a3d",
+            "surface-bright": "#31394d",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#dae2fd",
+            "secondary-fixed": "#c4e7ff",
+            "on-primary-container": "#003751",
+            "primary-fixed-dim": "#89ceff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1.5rem",
+            "container-max": "1280px",
+            "component-padding": "1.5rem",
+            "section-gap-mobile": "4rem",
+            "section-gap-desktop": "8rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Montserrat"],
+            "headline-lg-mobile": ["Montserrat"],
+            "headline-md": ["Montserrat"],
+            "headline-sm": ["Montserrat"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-code": ["IBM Plex Mono"],
+            "headline-lg": ["Montserrat"],
+            "body-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["36px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "label-code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "headline-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .glass-effect {
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    .project-card:hover {
+      border-color: #89ceff;
+      background: rgba(30, 41, 59, 0.6);
+    }
+
+    .tech-chip {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(137, 206, 255, 0.2);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+  <!-- Top Navigation Bar -->
+  <header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-border-glass">
+    <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+      <div class="font-headline-sm text-headline-sm font-bold text-primary tracking-tighter">PH</div>
+      <nav class="hidden md:flex items-center space-x-8 font-label-code text-label-code">
+        <a class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors duration-300"
+          href="#home">home</a>
+        <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+          href="#projects">projects</a>
+        <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+          href="#tools">tools</a>
+        <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300"
+          href="#contact">contact</a>
+      </nav>
+      <a class="hidden md:block bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-bold text-sm scale-95 active:scale-90 transition-all hover:brightness-110"
+        href="#">Resume</a>
+      <button class="md:hidden text-primary">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </header>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden" id="home">
+      <!-- Atmospheric Glow -->
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -z-10"></div>
+      <div class="max-w-container-max px-gutter mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 text-center md:text-left space-y-8">
+          <div class="space-y-4">
+            <h1 class="font-headline-xl text-headline-xl text-on-surface">Paolo Hagos</h1>
+            <h2 class="font-headline-sm text-headline-sm text-primary tracking-wide">Full Stack Web Developer</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+              I’m a developer who loves turning complex problems into simple, functional web applications. From
+              designing APIs to crafting smooth user interfaces, I focus on writing clean, maintainable code. Let's
+              build something great together.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+            <a class="w-full sm:w-auto bg-primary text-on-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2 group"
+              href="#projects">
+              View My Projects
+              <span
+                class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </a>
+            <a class="w-full sm:w-auto border border-primary text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary/5 transition-all text-center"
+              href="#contact">
+              Get In Touch
+            </a>
+          </div>
+        </div>
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+            </div>
+            <div
+              class="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-primary/20 p-2 glass-effect">
+              <img alt="Paolo Hagos Profile" class="w-full h-full object-cover rounded-full"
+                src="https://lh3.googleusercontent.com/aida/AP1WRLul3FqHiedHWx-nJDoDagD3zPgZ5N2NolU-WuGjWF-w5J_SFh_FccsVoDlKZ4W6YmgTA8FNF7Y1guw7F6jInImCJoA2cQh627yp8Eh1n5oaXn8soN0Tp5k9HOzWPpV4rN6YvSgzl9b--4GJOfbhlV87aFxhOnVFOPDtfYfruvJrZoH19N-zuuFLDKT3E3Aw8GoFXYKstxmZhjwLWKOV4eal7wBESHck8zW4Tbq_GYQMnhr_DtU53OKQZS4" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section class="py-section-gap-mobile md:py-section-gap-desktop bg-surface-container-lowest" id="projects">
+      <div class="max-w-container-max px-gutter mx-auto space-y-16">
+        <div class="text-center space-y-4">
+          <h2 class="font-headline-lg text-headline-lg">Featured Projects</h2>
+          <div class="h-1 w-24 bg-primary mx-auto rounded-full"></div>
+        </div>
+        <!-- Projects Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- E-commerce API -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                data-alt="A high-end interface mockup of an E-commerce API dashboard, featuring sleek dark modes, vibrant sky blue data visualizations, and clean documentation panels. The style is professional and technical, using glassmorphism effects and modern corporate design elements with sharp typography."
+                src="https://lh3.googleusercontent.com/aida/AP1WRLu8ppUQj3MCXv8LhfWRiZg_N2ObRgV1g3xaLGBCM1rdu4l4nqzqc4JPpLAIH00CLF7Sqh_BzODxCT_HLgiH_RwR6I9XoanxMlL_BJGhPugq-CINWuIEjJRegYzVI-eyc7Rzj-KRkyn2_5As1qywUiwu83TJqsDKg_yteIXZnTC4i-xnSDzAf6chRIZa1yfQ4hI7p2qQtyBExF-kElPPcnepbOjnkesCp5fUNsyFIjmp43uXHjdoxHv5ctaj" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase tracking-widest">API</span>
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase tracking-widest">Postman</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                E-commerce API Documentation</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
+                Dynamic E-Commerce Workflow Management featuring dynamic routes, real-time inventory updates, and secure
+                authentication.
+              </p>
+              <div class="mt-auto pt-4 border-t border-border-glass flex items-center justify-between">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Course Booking App -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                data-alt="A modern web application dashboard for course booking, showcasing a calendar view with colorful schedule blocks on a clean dark background. The UI features intuitive navigation, glassmorphic card overlays, and a sophisticated technical aesthetic using sky blue as the primary accent color."
+                src="https://lh3.googleusercontent.com/aida/AP1WRLvcqdmQoMhEjZ3Dlp4ryrZJ09uZrcT1qHK4-O7dZ2TAz4vHz-LQOCL9zsA-q8sBgOg-Tc_mI2wwZ9Gsyqg36hsCVj80JF6S4_xgwBjX_u8vUe2WNFoqMFjByzw1xsO-joXBYnhMi4BEeGegWrMiqBmsLi3U_Y9b33VsHefeuBYvJaTsi0ncKbzpdGU-Fb5-kcLH88lmq6O0YFQkZe2aQUlr-DJ7EYC--zAahrCd3YX_YVA-MHSsgKGRgJhR" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">MongoDB</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">React</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Node.js</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Course Booking App</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
+                A MERN-stack enrollment system with user authentication and profile management for creating and managing
+                courses.
+              </p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- E-commerce App -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                data-alt="Mobile app screens for an e-commerce platform displaying high-fashion products with elegant typography and clean white space against a dark UI theme. The layout is a modern bento-style grid with glassmorphic cards and blue primary button highlights, evoking a high-performance shopping experience."
+                src="https://lh3.googleusercontent.com/aida/AP1WRLteNujKv2IVZkdw_3IzxCjxdVlytxiyhD8HEjPrkqb0f_I-4F_pQDOCSZ1tQsNkmb9ROKQ3R-KyiMkykfvp9CASJ4Q902R8T2vZjo-34EV2qsCaLaPYJ45VvV6C9cqTPdKL5spCaEReZFzgRfV_TvQiRP4_PCJ_jg7Cv3nDwUSa00Vf6IaSskmyLP5TXIq1f5xuXA_7hme7AEE200HI-E3iA-NgOcYWv2BLRK0q2VyzT4y6DHpjOYWYb1E" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Express.js</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">MERN</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                E-commerce App</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
+                Platform featuring dynamic product catalogs, filtering, real-time search, and a comprehensive admin
+                dashboard with analytics.
+              </p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- AWS Infra -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                data-alt="A detailed technical architectural diagram of an AWS cloud infrastructure, showing VPCs, EC2 instances, and S3 buckets interconnected. The visual style is clean and diagrammatic with a modern technical aesthetic, using a palette of blues and grays to signify enterprise-grade reliability."
+                src="https://lh3.googleusercontent.com/aida/AP1WRLsEhKQzCWLxeBF2tItTVDuMJlvVc9SbGWDi2S8vl3KFZus1B0xrZJq9owxjmM0r_owvUjAED_pJ5ZPoJ3wRSkq3YhAXee_4SvBvKP5ndyieXQvnezigqgzMLHtdlppKg9sEQ1mtUsR2NyzBkvvjHHhcuQLMBal_DUJqcWC4lglxSkpf_JcFAPJMeBzPyFSwEINmvxy1bb1d8Eg7e6bHxvBFqvCnr6kmT78igtw3ibbg54PTZ3Rp14Lhrrw" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">AWS</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">EC2</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Lambda</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Infra Capstone (AWS)</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
+                Secure, highly available infrastructure utilizing VPCs, auto-scaling, and RDS for multi-tier web
+                hosting.
+              </p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Java Spring Boot -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                data-alt="A stylized glowing Java and Spring Boot logo set against a backdrop of complex lines of code and digital data nodes. The lighting is dark and cinematic with neon blue highlights, representing robust back-end engineering and high-performance server-side logic in a modern developer portfolio style."
+                src="https://lh3.googleusercontent.com/aida/AP1WRLu99AQC4osxXty9O2kiwX_Zef6i-o98oecaR83ugdM7dpfRn_0XlAOj3gDQyDNnFZl2I2RLFmWUTeyYGUvYLrqsNw94PvxYP00rnIzUL4Ju4dYEuQfUWAjs6eoLD5qBxynUd4iBcHOH4N8QKnaSZgC03EqehJDWxM779EuhGT3I7EsMjfpx9t_9GWLk1mzHrX3UO76a0PZK90Pj0WBDs1XoATe4OPV77XJloZdVQbPqYI66ThXXnUWLSsUR" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Java</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">Spring
+                  Boot</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                Java Back-End Capstone</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
+                RESTful back-end service built with Spring Boot, managing authentication, transactions, and persistence.
+              </p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- ASP.NET C# -->
+          <div
+            class="project-card glass-effect rounded-xl overflow-hidden transition-all flex flex-col group border border-border-glass">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="project-image w-full h-full object-cover transition-transform duration-500"
+                data-alt="A conceptual software architecture diagram for an ASP.NET Core project, featuring decoupled layers and repository patterns. The design is clean and technical, using professional blue tones and modern line icons to represent various web services and data repositories in a high-fidelity developer context."
+                src="https://lh3.googleusercontent.com/aida/AP1WRLukAdczi4IIsJgBSLVxjS4sPF1VmLe-VUQEol-D4COflgdU3f5Zprf3M5sZWiW0M6ZLQRnZogFm8Jzmvk1OsmImpBhgZbKdbh5Tqxt2F7GHnDcwST-gE5IM_yUTk92XU10cdsLx_jyW_OcB3VhN0SCKcVPK7EezHVXehehg20VxcYk2v3t2rruCh81rplkTg9H7incCc43q-ff72ntSQP8tLb4dSzoN8qB-D03nLu9lbn08U6YflXMfKP_p" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow space-y-4">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">C#</span>
+                <span class="tech-chip text-primary px-2 py-1 rounded font-label-code text-xs uppercase">ASP.NET</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                C# Back-End Capstone</h3>
+              <p class="text-on-surface-variant text-sm line-clamp-4 leading-relaxed">
+                High-performance Web API using decoupled repository pattern and Entity Framework Core for robust data
+                management.
+              </p>
+              <div class="mt-auto pt-4 border-t border-border-glass">
+                <button class="text-primary font-bold text-sm flex items-center gap-2 group/btn">
+                  VIEW INFO
+                  <span
+                    class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Tools & Tech Section -->
+    <section class="py-section-gap-mobile md:py-section-gap-desktop" id="tools">
+      <div class="max-w-container-max px-gutter mx-auto space-y-16">
+        <div class="text-center space-y-4">
+          <h2 class="font-headline-lg text-headline-lg">Tech Stack & Tools</h2>
+          <p class="text-on-surface-variant max-w-2xl mx-auto">The building blocks of my digital architecture.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Category Card -->
+          <div
+            class="glass-effect p-8 rounded-xl border border-border-glass space-y-6 hover:border-primary/40 transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded bg-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">web</span>
+              </div>
+              <h4 class="font-headline-sm text-sm font-bold uppercase tracking-widest">Front End</h4>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">HTML</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">CSS</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Bootstrap</span>
+              <span class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">JS</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Blazor</span>
+            </div>
+          </div>
+          <!-- Category Card -->
+          <div
+            class="glass-effect p-8 rounded-xl border border-border-glass space-y-6 hover:border-primary/40 transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded bg-secondary/20 flex items-center justify-center text-secondary">
+                <span class="material-symbols-outlined">database</span>
+              </div>
+              <h4 class="font-headline-sm text-sm font-bold uppercase tracking-widest">Back End</h4>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">C#</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">ASP.NET</span>
+              <span class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">SQL
+                Server</span>
+            </div>
+          </div>
+          <!-- Category Card -->
+          <div
+            class="glass-effect p-8 rounded-xl border border-border-glass space-y-6 hover:border-primary/40 transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded bg-primary/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">layers</span>
+              </div>
+              <h4 class="font-headline-sm text-sm font-bold uppercase tracking-widest">MERN</h4>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">MongoDB</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Express</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">React</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Node.js</span>
+            </div>
+          </div>
+          <!-- Category Card -->
+          <div
+            class="glass-effect p-8 rounded-xl border border-border-glass space-y-6 hover:border-primary/40 transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded bg-secondary/20 flex items-center justify-center text-secondary">
+                <span class="material-symbols-outlined">construction</span>
+              </div>
+              <h4 class="font-headline-sm text-sm font-bold uppercase tracking-widest">Dev Tools</h4>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Figma</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Heroku</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Git</span>
+              <span
+                class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">Postman</span>
+              <span class="tech-chip px-3 py-1.5 rounded-full text-xs font-label-code text-on-surface-variant">VS
+                Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="py-section-gap-mobile md:py-section-gap-desktop bg-surface-container-low relative" id="contact">
+      <div class="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+        <div
+          class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[150px] translate-x-1/2 -translate-y-1/2">
+        </div>
+      </div>
+      <div class="max-w-container-max px-gutter mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          <div class="space-y-8">
+            <div class="space-y-4">
+              <h2 class="font-headline-lg text-headline-lg">Let's Collaborate</h2>
+              <p class="font-body-lg text-on-surface-variant leading-relaxed">
+                Have a project in mind or just want to say hi? I'm always open to discussing new opportunities and
+                technical challenges.
+              </p>
+            </div>
+            <div class="space-y-6">
+              <div class="flex items-center gap-6">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">mail</span>
+                </div>
+                <div>
+                  <h5 class="font-bold text-on-surface">Email</h5>
+                  <p class="text-on-surface-variant">hello@paolohagos.com</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-6">
+                <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                  <span class="material-symbols-outlined">location_on</span>
+                </div>
+                <div>
+                  <h5 class="font-bold text-on-surface">Location</h5>
+                  <p class="text-on-surface-variant">Based in PH, working globally.</p>
+                </div>
+              </div>
+            </div>
+            <div class="pt-8 space-y-4">
+              <h4 class="font-label-code text-sm uppercase tracking-widest text-primary">My Socials</h4>
+              <div class="flex gap-4">
+                <a class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:text-primary hover:border-primary transition-all"
+                  href="#">
+                  <span class="material-symbols-outlined">person_pin</span>
+                </a>
+                <a class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:text-primary hover:border-primary transition-all"
+                  href="#">
+                  <span class="material-symbols-outlined">terminal</span>
+                </a>
+                <a class="w-10 h-10 glass-effect rounded-lg flex items-center justify-center hover:text-primary hover:border-primary transition-all"
+                  href="#">
+                  <span class="material-symbols-outlined">share</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="glass-effect p-8 md:p-12 rounded-2xl border border-border-glass">
+            <form class="space-y-6">
+              <div class="space-y-2">
+                <label class="font-label-code text-xs uppercase tracking-widest text-on-surface-variant">Subject</label>
+                <input
+                  class="w-full bg-surface-container-highest/50 border border-border-glass rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-all"
+                  placeholder="Project Inquiry" type="text" />
+              </div>
+              <div class="space-y-2">
+                <label class="font-label-code text-xs uppercase tracking-widest text-on-surface-variant">Email</label>
+                <input
+                  class="w-full bg-surface-container-highest/50 border border-border-glass rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-all"
+                  placeholder="your@email.com" type="email" />
+              </div>
+              <div class="space-y-2">
+                <label class="font-label-code text-xs uppercase tracking-widest text-on-surface-variant">Message</label>
+                <textarea
+                  class="w-full bg-surface-container-highest/50 border border-border-glass rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-all resize-none"
+                  placeholder="Tell me about your project..." rows="5"></textarea>
+              </div>
+              <button
+                class="w-full bg-primary-container text-on-primary-container font-bold py-4 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+                type="submit">
+                Send Message
+                <span class="material-symbols-outlined">send</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-surface border-t border-border-glass">
+    <div
+      class="flex flex-col md:flex-row justify-between items-center py-section-gap-mobile md:py-12 px-gutter max-w-container-max mx-auto text-center md:text-left gap-8">
+      <div class="space-y-2">
+        <div class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tighter">PH</div>
+        <p class="text-text-muted text-sm max-w-xs">© 2024 Paolo Hagos. Built for the Digital Architect.</p>
+        <p class="text-text-muted text-xs">All Rights Reserved 2026</p>
+      </div>
+      <nav class="flex gap-8 font-label-code text-sm">
+        <a class="text-text-muted hover:text-secondary transition-colors" href="#">GitHub</a>
+        <a class="text-text-muted hover:text-secondary transition-colors" href="#">LinkedIn</a>
+        <a class="text-text-muted hover:text-secondary transition-colors" href="#">Twitter</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+        <span class="text-text-muted text-xs uppercase tracking-widest">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+  <!-- Scroll to top fab -->
+  <button
+    class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all z-40"
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+  <script>
+    // Simple intersection observer for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.project-card, .glass-effect').forEach(el => {
+      el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+      observer.observe(el);
+    });
+  </script>
+</body>
+
 </html>
