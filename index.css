@@ -1,40 +1,4 @@
-nav a {
-    font-family: "Montserrat";
-}
-
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-.glass-effect {
-    background: rgba(30, 41, 59, 0.4);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.project-card:hover .project-image {
-    transform: scale(1.05);
-}
-
-.project-card:hover {
-    border-color: #89ceff;
-    background: rgba(30, 41, 59, 0.6);
-}
-
-.tech-chip {
-    font-family: "Hanken Grotesk" !important;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(137, 206, 255, 0.2);
-}
-
-#contact form label {
-    font-family: "Montserrat" !important;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+/* Tailwind CSS */
 *,
 ::before,
 ::after {
